@@ -1,0 +1,109 @@
+/* Reset básico para uma melhor consistência entre navegadores */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilização geral da página */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(77, 110, 119, 0.9), rgba(0, 0, 0, 0.9)), 
+              url('./Imagens/paginainicial.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff; /* Melhor legibilidade no fundo */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabeçalho */
+header {
+  padding: 1.5rem 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6); /* Fundo semitransparente */
+  color: #fff;
+}
+
+/* Menu de navegação */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem;
+  border-radius: 0 0 10px 10px;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.2rem;
+  transition: color 0.3s, transform 0.3s;
+}
+
+nav a:hover {
+  color: #4d6e77;
+  transform: scale(1.1);
+}
+
+/* Conteúdo principal */
+main {
+  flex-grow: 1; /* Faz o conteúdo expandir e ocupar espaço */
+  margin: 2rem auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+/* Estilização dos cards */
+.card {
+  text-align: center;
+  width: 200px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Rodapé */
+footer {
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 1rem 0;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  color: #fff;
+}
+
+/* Responsividade - Telas menores */
+@media (max-width: 768px) {
+  nav {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  nav a {
+      font-size: 1rem;
+  }
+
+  main {
+      padding: 1rem;
+  }
+
+  .card {
+      width: 100%;
+  }
+}
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Glicemia</title>
+    <link rel="stylesheet" href="glicose.css">
+</head>
+<body>
+    <header>
+        <h1>Registro de Glicemia</h1>
+        <p>Acompanhe e registre seus níveis de glicose.</p>
+    </header>
+    
+    <main>
+        <form id="glicemia-form">
+            <label for="nivelGlicemia">Nível de Glicemia (mg/dL):</label>
+            <input type="number" id="nivelGlicemia" required>
+            
+            <label for="periodo">Período:</label>
+            <select id="periodo" required onchange="mostrarCampoOutro(this)">
+                <option value="jejum">Em jejum</option>
+                <option value="posCafe">Após café da manhã</option>
+                <option value="preAlmoco">Antes do almoço</option>
+                <option value="posAlmoco">Após almoço</option>
+                <option value="preJantar">Antes do jantar</option>
+                <option value="posJantar">Após jantar</option>
+                <option value="outro">Outro (especifique)</option>
+            </select>
+            
+            <input type="text" id="periodoOutro" placeholder="Digite o período" style="display:none;">
+            
+            <button type="submit">Registrar</button>
+        </form>
+
+        <h2>Histórico de Glicemia</h2>
+        <ul id="historicoGlicemia"></ul>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Glucose Vida - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function mostrarCampoOutro(select) {
+            const campoOutro = document.getElementById("periodoOutro");
+            if (select.value === "outro") {
+                campoOutro.style.display = "block";
+                campoOutro.required = true;
+            } else {
+                campoOutro.style.display = "none";
+                campoOutro.required = false;
+            }
+        }
+    </script>
+</body>
+</html>
