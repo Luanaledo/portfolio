@@ -1,0 +1,62 @@
+body.alimentacao-page {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(77, 110, 119, 0.9), rgba(0, 0, 0, 0.9)), 
+    url('./Imagens/imagemalimen.webp');
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+}
+
+h2 {
+    color: #4d6e77;;
+}
+
+select, input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background: #4d6e77;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #3b545c;
+}
+
+.registro {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.registro-item {
+    background: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

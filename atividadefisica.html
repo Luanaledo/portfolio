@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário de Atividades</title>
+    <link rel="stylesheet" href="atividadefisica.css">
+    <script src="atividadefisica.js" defer></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-top: 20px;
+        }
+        .day {
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+            color: white;
+        }
+        .day.activity-done {
+            background: #4CAF50;
+        }
+        .day.no-activity {
+            background: #FF6347;
+        }
+        .selected {
+            outline: 3px solid yellow;
+        }
+        .input-container {
+            margin-top: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        input {
+            width: calc(100% - 22px);
+            border: 1px solid #ccc;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .activity-list {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .activity-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .activity-list li {
+            background: #e0f7e0;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Calendário de Atividades Físicas</h2>
+        <div id="calendar" class="calendar"></div>
+        <h3 id="selectedDate">Selecione um dia</h3>
+        <div class="input-container">
+            <input type="text" id="activity" placeholder="Digite a atividade" />
+            <button onclick="saveActivity()">Salvar</button>
+        </div>
+        <div class="activity-list">
+            <h3>Atividades Registradas</h3>
+            <ul id="activityList"></ul>
+        </div>
+    </div>
+
+    <script>
+        const calendar = document.getElementById("calendar");
+        const selectedDate = document.getElementById("selectedDate");
+        const activityInput = document.getElementById("activity");
+        const activityList = document.getElementById("activityList");
+        let selectedDay = null;
+        const activities = JSON.parse(localStorage.getItem("activities")) || {};
+
+        function generateCalendar() {
+            for (let i = 1; i <= 30; i++) {
+                const day = document.createElement("div");
+                day.className = "day";
+                day.textContent = i;
+                day.onclick = () => selectDay(i, day);
+                calendar.appendChild(day);
+                updateDayColor(day, i);
+            }
+        }
+
+        function selectDay(day, element) {
+            document.querySelectorAll(".day").forEach(d => d.classList.remove("selected"));
+            element.classList.add("selected");
+            selectedDay = day;
+            selectedDate.textContent = `Atividades do dia ${day}`;
+            activityInput.value = activities[day] || "";
+            updateActivityList(day);
+        }
+
+        function saveActivity() {
+            if (!selectedDay) {
+                alert("Selecione um dia!");
+                return;
+            }
+            activities[selectedDay] = activityInput.value;
+            localStorage.setItem("activities", JSON.stringify(activities));
+            updateActivityList(selectedDay);
+            updateDayColor(document.querySelectorAll(".day")[selectedDay - 1], selectedDay);
+        }
+
+        function updateActivityList(day) {
+            activityList.innerHTML = "";
+            if (activities[day]) {
+                const li = document.createElement("li");
+                li.textContent = activities[day];
+                activityList.appendChild(li);
+            }
+        }
+
+        function updateDayColor(dayElement, day) {
+            if (activities[day]) {
+                dayElement.classList.add("activity-done");
+                dayElement.classList.remove("no-activity");
+            } else {
+                dayElement.classList.add("no-activity");
+                dayElement.classList.remove("activity-done");
+            }
+        }
+
+        generateCalendar();
+    </script>
+</body>
+</html>
+

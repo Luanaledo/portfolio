@@ -8,7 +8,8 @@
 
 /* Estilização do corpo */
 body {
-    background: linear-gradient(to bottom, #ffffff, #4d6e77, #000000);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(77, 110, 119, 0.9), rgba(0, 0, 0, 0.9)), 
+    url('./Imagens/imagemgli.webp');
     color: #333;
     display: flex;
     flex-direction: column;

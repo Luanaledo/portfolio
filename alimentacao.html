@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Alimentação</title>
+
+    <link rel="stylesheet" href="alimentacao.css">
+    <script src="alimentacao.js" defer></script>
+</head>
+<body class="alimentacao-page">
+    <div class="container">
+        <h2>Registro de Alimentação</h2>
+        <label for="refeicao">Escolha a refeição:</label>
+        <select id="refeicao">
+            <option value="Café da Manhã">Café da Manhã</option>
+            <option value="Lanche da Manhã">Lanche da Manhã</option>
+            <option value="Almoço">Almoço</option>
+            <option value="Lanche da Tarde">Lanche da Tarde</option>
+            <option value="Jantar">Jantar</option>
+            <option value="Ceia">Ceia</option>
+        </select>
+        
+        <input type="text" id="alimento" placeholder="Digite o alimento consumido">
+        
+   
+
+        <title>Calculadora de carboidratos</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Calculadora de carboidratos</h1>
+            <div class="calculo">
+                <span id="carbPorUnidadeTexto">20 g de carboidrato</span>
+                <span class="tracos">----------------</span>
+                <span id="insulinaPorUnidadeTexto">1 unidade de insulina</span>
+            </div>
+            <div class="calculo">
+                <span id="carbConsumidosTexto">50 g de carboidrato</span>
+                <span class="tracos">--------------</span>
+                <span id="insulinaNecessariaTexto">X unidade de insulina</span>
+            </div>
+            <form id="insulinaForm">
+                <label for="carbPorUnidade">Carboidratos por unidade de insulina (g):</label>
+                <input type="number" id="carbPorUnidade" required>
+    
+                <label for="carbConsumidos">Carboidratos consumidos (g):</label>
+                <input type="number" id="carbConsumidos" required>
+    
+                <button type="button" onclick="calcularInsulina()">Calcular</button>
+            </form>
+            <div id="resultado"></div>
+        </div>
+        <script src="script.js"></script>
+
+        <!DOCTYPE html>
+<html>
+
+
