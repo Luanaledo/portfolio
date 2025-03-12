@@ -1,47 +1,70 @@
-const calendar = document.getElementById("calendar");
-const selectedDate = document.getElementById("selectedDate");
-const activityInput = document.getElementById("activity");
-const activityList = document.getElementById("activityList");
-let selectedDay = null;
-const activities = JSON.parse(localStorage.getItem("activities")) || {};
+document.addEventListener("DOMContentLoaded", function () {
+    const calendar = document.getElementById("calendar");
+    const atividadesList = document.getElementById("atividadesList");
 
-function generateCalendar() {
+    // Criar calendário dinâmico
     for (let i = 1; i <= 30; i++) {
-        const day = document.createElement("div");
-        day.className = "day";
-        day.textContent = i;
-        day.onclick = () => selectDay(i, day);
+        let day = document.createElement("div");
+        day.classList.add("day");
+        day.innerText = i;
+        day.setAttribute("data-day", i);
+        
+        // Verifica se tem atividade salva no localStorage
+        if (localStorage.getItem(`dia-${i}`)) {
+            day.classList.add("active");
+        }
+
+        day.addEventListener("click", function () {
+            selecionarDia(i);
+        });
+
         calendar.appendChild(day);
     }
-}
+});
 
-function selectDay(day, element) {
-    document.querySelectorAll(".day").forEach(d => d.classList.remove("selected"));
-    element.classList.add("selected");
-    selectedDay = day;
-    selectedDate.textContent = `Atividades do dia ${day}`;
-    activityInput.value = activities[day] || "";
-    updateActivityList(day);
-}
+// Função para salvar atividade
+function salvarAtividade() {
+    const input = document.getElementById("atividadeInput");
+    const atividade = input.value.trim();
+    const diaSelecionado = document.querySelector(".day.selected");
 
-function saveActivity() {
-    if (!selectedDay) {
-        alert("Selecione um dia!");
+    if (atividade === "" || !diaSelecionado) {
+        alert("Selecione um dia e digite uma atividade!");
         return;
     }
-    activities[selectedDay] = activityInput.value;
-    localStorage.setItem("activities", JSON.stringify(activities));
-    updateActivityList(selectedDay);
+
+    const dia = diaSelecionado.getAttribute("data-day");
+    localStorage.setItem(`dia-${dia}`, atividade);
+
+    // Atualizar visualmente
+    diaSelecionado.classList.add("active");
+    atualizarLista();
+    input.value = "";
 }
 
-function updateActivityList(day) {
-    activityList.innerHTML = "";
-    if (activities[day]) {
-        const li = document.createElement("li");
-        li.textContent = activities[day];
-        activityList.appendChild(li);
+// Função para atualizar a lista de atividades registradas
+function atualizarLista() {
+    atividadesList.innerHTML = "";
+
+    for (let i = 1; i <= 30; i++) {
+        let atividade = localStorage.getItem(`dia-${i}`);
+        if (atividade) {
+            let item = document.createElement("li");
+            item.innerText = `Dia ${i}: ${atividade}`;
+            atividadesList.appendChild(item);
+        }
     }
 }
 
-generateCalendar();
+// Função para selecionar um dia no calendário
+function selecionarDia(dia) {
+    const dias = document.querySelectorAll(".day");
+    dias.forEach(d => d.classList.remove("selected"));
+
+    const diaSelecionado = document.querySelector(`.day[data-day='${dia}']`);
+    diaSelecionado.classList.add("selected");
+}
+
+// Atualizar a lista ao carregar a página
+atualizarLista();
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Consumo de Água</title>
+    <link rel="stylesheet" href="hidratacao.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="Menu.html">Início</a></li>
+            <li><a href="glicose.html">Glicose</a></li>
+            <li><a href="atividadefisica.html">Atividade Física</a></li>
+            <li><a href="alimentacao.html">Alimentação</a></li>
+            <li><a href="hidratacao.html">Hidratação</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <h2>Registro de Consumo de Água</h2>
+
+        <!-- Seletor de mês -->
+        <div class="month-selector">
+            <button onclick="mudarMes(-1)">◀</button>
+            <span id="mesAtual"></span>
+            <button onclick="mudarMes(1)">▶</button>
+        </div>
+
+        <!-- Calendário -->
+        <div class="calendar" id="calendar"></div>
+
+        <h3>Selecione um dia e registre seu consumo</h3>
+        <input type="number" id="aguaInput" placeholder="Digite a quantidade (ml)">
+        <button onclick="salvarConsumo()">Registrar</button>
+        <button class="reset-btn" onclick="resetarRegistro()">Resetar Registros</button>
+
+        <h3>Consumo Diário</h3>
+        <ul id="consumoList" class="consumo"></ul>
+    </div>
+
+    <script src="hidratacao.js"></script>
+</body>
+
+</html>
+

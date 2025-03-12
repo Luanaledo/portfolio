@@ -3,52 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glucose Vida</title>
-    <link rel="stylesheet" href="Menu.css">
-    <script src="menu.js" defer></script>
+    <title>Glucose Vida - Monitoramento</title>
+    <link rel="stylesheet" href="menu.css">
 </head>
 <body>
-    <header>
-        <h1>Glucose Vida</h1>
-        <p>Simples e direto, focado no controle da glicose.</p>
-    </header>
-
-    <nav>
-        <a href="#">Glicemia</a>
-        <a href="#">Atividade Física</a>
-        <a href="#">Alimentação</a>
-        <a href="#">Hidratação</a>
+    <nav class="navbar">
+        <ul>
+            <li><a href="Menu.html">Início</a></li>
+            <li><a href="glicose.html">Glicose</a></li>
+            <li><a href="atividadefisica.html">Atividade Física</a></li>
+            <li><a href="alimentacao.html">Alimentação</a></li>
+            <li><a href="hidratacao.html">Hidratação</a></li>
+        </ul>
     </nav>
+    <div class="container">
+        <h1>Glucose Vida - Monitoramento de Saúde</h1>
 
-    <main>
-        <div class="card">
-            <a href="glicemia.html">
-                <img src="Imagens/glicemia.webp" alt="Registro da glicemia">
-                <p>Glicemia</p>
-            </a>
-        </div>
-        <div class="card">
-            <a href="atividade-fisica.html">
-                <img src="Imagens/atividadefisica.webp" alt="Praticando atividade física">
-                <p>Atividade Física</p>
-            </a>
-        </div>
-        <div class="card">
-            <a href="alimentacao.html">
-                <img src="Imagens/alimentacao.webp" alt="Alimentos saudáveis para controle da glicemia">
-                <p>Alimentação</p>
-            </a>
-        </div>
-        <div class="card">
-            <a href="hidratacao.html">
-                <img src="Imagens/hidratacao.webp" alt="Importância da hidratação no controle glicêmico">
-                <p>Hidratação</p>
-            </a>
-        </div>
-    </main>
+        <div class="menu">
+            <div class="menu-item" onclick="window.location.href='glicose.html'">
+              <img src="imagens/glicemia.webp" alt="Glicemia">
+                <span>Ver Glicemia</span>
+            </div>
 
-    <footer>
-        <p>&copy; 2025 Glucose Vida - Todos os direitos reservados.</p>
-    </footer>
+            <div class="menu-item" onclick="window.location.href='atividadefisica.html'">
+                <img src="imagens/atividadefisica.webp" alt="Atividade Física">
+                <span>Ver Atividade Física</span>
+            </div>
+
+            <div class="menu-item" onclick="window.location.href='alimentacao.html'">
+                <img src="imagens/alimentacao.webp" alt="Alimentação">
+                <span>Ver Alimentação</span>
+            </div>
+
+            <div class="menu-item" onclick="window.location.href='hidratacao.html'">
+               <img src="imagens/hidratacao.webp" alt="Hidratação">
+                <span>Ver Consumo de Água</span>
+            </div>
+        </div>
+    </div>
+ 
 </body>
 </html>

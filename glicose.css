@@ -9,12 +9,14 @@
 /* Estilização do corpo */
 body {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(77, 110, 119, 0.9), rgba(0, 0, 0, 0.9)), 
-    url('./Imagens/imagemgli.webp');
+    url('./Imagens/imagemgli.webp') no-repeat center center;
+    background-size: cover;
     color: #333;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    padding-top: 50px;
 }
 
 /* Cabeçalho */
@@ -25,6 +27,45 @@ header {
     background: #4d6e77;
     width: 100%;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo do menu de navegação */
+.navbar {
+    background-color: #007acc;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.navbar ul li a:hover {
+    background-color: #005f99;
 }
 
 /* Formulário */
@@ -99,6 +140,7 @@ footer {
     bottom: 0;
 }
 
+/* Ajustes para telas menores */
 @media (max-width: 600px) {
     form {
         width: 95%;
